@@ -1,11 +1,12 @@
 # With a Param - thresh 
 #
+import cv2
 import rclpy
+from cv_bridge import CvBridge
+from rcl_interfaces.msg import IntegerRange, ParameterDescriptor, SetParametersResult
 from rclpy.node import Node
 from sensor_msgs.msg import Image
-from rcl_interfaces.msg import ParameterDescriptor, IntegerRange, SetParametersResult
-import cv2
-from cv_bridge import CvBridge
+
 
 class WhitePct(Node):
 
@@ -16,7 +17,7 @@ class WhitePct(Node):
         # Declare parameters with default values & descriptor
         int_range = IntegerRange(from_value=0, to_value=255, step=1)
         param_threshold_descriptor = ParameterDescriptor(description='Threshold', integer_range=[int_range])
-        self.declare_parameter('thresh', 127, param_threshold_descriptor)
+        self.declare_parameter('thresh', 180, param_threshold_descriptor)
         self.add_on_set_parameters_callback(self.param_callback)
         
         # Initialize the CvBridge utility

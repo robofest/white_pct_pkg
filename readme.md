@@ -3,3 +3,9 @@
 ```bash
 $ ros2 launch white_pct_pkg white_pct_pkg.launch.py
 ```
+
+Adjust threshold parameter using rqt => dynamic_reconfigure GUI
+
+```bash
+$ rqt
+```

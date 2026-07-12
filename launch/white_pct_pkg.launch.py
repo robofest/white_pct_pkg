@@ -1,5 +1,7 @@
-from launch import LaunchDescription
 from launch_ros.actions import Node
+
+from launch import LaunchDescription
+
 
 def generate_launch_description():
     return LaunchDescription([
@@ -37,6 +39,10 @@ def generate_launch_description():
             package='white_pct_pkg',
             executable='white_pct_node_exe',
             name='white_pct_node', # nick_name for this node
-            output='screen'
+            output='screen',
+            parameters=[
+                {'cam_topic': '/image_raw'},
+                {'thresh': 180},
+            ],
         )
     ])

@@ -1,4 +1,4 @@
-# With a Param - thresh 
+# With params: thresh and cam_topic 
 #
 import cv2
 import rclpy
@@ -20,6 +20,9 @@ class WhitePct(Node):
         self.declare_parameter('thresh', 180, param_threshold_descriptor)
         self.add_on_set_parameters_callback(self.param_callback)
         
+        self.declare_parameter('cam_topic', '/image_raw', ParameterDescriptor(description='Camera Topic'))
+        cam_topic = self.get_parameter('cam_topic').value
+        
         # Initialize the CvBridge utility
         self.bridge = CvBridge()
         
@@ -27,7 +30,7 @@ class WhitePct(Node):
         # (Change '/image_raw' to '/camera' if you remapped the usb_cam output)
         self.subscription = self.create_subscription(
             Image,
-            '/image_raw',
+            cam_topic,
             self.listener_callback,
             10)
             

@@ -13,7 +13,7 @@ def generate_launch_description():
                 {'video_device': '/dev/video0'},
                 {'image_width': 320},
                 {'image_height': 240},
-                {'framerate': 20.0}, # was 30.0
+                {'framerate': 30.0},
                 
                 # --- The WSL Bandwidth Fix (MJPEG Compression) ---
                 {'pixel_format': 'mjpeg2rgb'},  # Hardware compression over usbipd
@@ -23,10 +23,10 @@ def generate_launch_description():
                 # Note: Parameter names depend on the driver version. 
                 # If these specific parameters aren't parsed by your version, 
                 # keep using 'v4l2-ctl' in a separate terminal.
-                {'brightness': 180},           # Boost low-light performance, was 200
-                {'gain': 150},                 # Increases sensitivity if supported
-                {'autoexposure': False},       # Set to False to manually override exposure
-                {'exposure': 150},             # Adjust exposure absolute value
+                # {'brightness': 180},           # Boost low-light performance, was 200
+                # {'gain': 150},                 # Increases sensitivity if supported
+                # {'autoexposure': False},       # Set to False to manually override exposure
+                # {'exposure': 150},             # Adjust exposure absolute value
                 
                 # --- Topic Configuration ---
                 {'camera_name': 'default_cam'},
